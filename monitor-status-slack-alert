@@ -1,0 +1,8 @@
+status=`cat /root/watcher/.prod.status`
+if $status
+then
+    status_s="Enabled"
+else
+    status_s="Disabled"
+fi
+notify-slack.sh -c watcher-slack-channel -u "Watcher" -i monitoring -h slack-channel-hook -m "*Status:* $status_s" -T "Unhealthy executor watcher" -C ECB22E

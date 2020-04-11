@@ -1,0 +1,6 @@
+status=`cat /root/watcher/.prod.status`
+if $status
+then
+	python3 /root/watcher/framework-scraper.py
+	python3 /root/watcher/watch-unhealthy-executors.py
+fi
